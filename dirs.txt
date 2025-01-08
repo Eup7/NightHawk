@@ -1,0 +1,7 @@
+admin
+wp-admin
+login
+images
+uploads
+backup
+test 

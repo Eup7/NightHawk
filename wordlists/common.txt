@@ -1,0 +1,12 @@
+admin
+wp-admin
+login
+images
+uploads
+backup
+test
+api
+docs
+static
+media
+assets 
