@@ -29,14 +29,13 @@ class PortScanner:
             result = sock.connect_ex((self.target, port))
             if result == 0:
                 service = socket.getservbyport(port)
-                print(f"\033[38;5;51m[+] 发现开放端口: {port} ({service})\033[0m")  # 青色
+                print(f"\033[38;5;51m[+] 发现开放端口: {port} ({service})\033[0m")
                 self.open_ports.append((port, service))
             sock.close()
         except:
             pass
 
     def check_target_latency(self):
-        """检测目标主机延迟"""
         try:
             print("\033[33m[*] 正在检测目标主机延迟...\033[0m")
             start_time = time.time()
@@ -57,8 +56,6 @@ class PortScanner:
             return False
 
     def start_scan(self):
-        """开始扫描"""
-        # 首先检测目标主机延迟
         if not self.check_target_latency():
             print("\033[31m[-] 无法连接到目标主机，扫描终止\033[0m")
             return

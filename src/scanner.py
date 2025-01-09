@@ -27,7 +27,6 @@ class DirectoryScanner:
                 print(f"\033[31m[-] 错误: 找不到字典文件 {self.wordlist_file}\033[0m")
                 return []
         else:
-            # 使用内置字典
             return self.dir_dict.get_all()
 
     def scan_url(self, path):
@@ -48,7 +47,6 @@ class DirectoryScanner:
             pass
 
     def check_target_latency(self):
-        """检测目标网站延迟"""
         try:
             print("\033[33m[*] 正在检测目标网站延迟...\033[0m")
             start_time = time.time()
@@ -58,7 +56,7 @@ class DirectoryScanner:
                 proxies=self.proxy_manager.proxy,
                 headers=self.proxy_manager.get_headers()
             )
-            latency = (time.time() - start_time) * 1000  # 转换为毫秒
+            latency = (time.time() - start_time) * 1000
             if response.status_code == 200:
                 print(f"\033[32m[+] 目标网站连接成功! 延迟: {latency:.2f}ms\033[0m")
                 return True
@@ -70,8 +68,6 @@ class DirectoryScanner:
             return False
 
     def start_scan(self):
-        """开始扫描"""
-        # 首先检测目标延迟
         if not self.check_target_latency():
             print("\033[31m[-] 无法连接到目标网站，扫描终止\033[0m")
             return
@@ -93,7 +89,6 @@ class DirectoryScanner:
         print(f"{'=' * 40}\033[0m")
 
     def save_results(self):
-        """保存扫描结果到文件"""
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         result_file = f"results_{timestamp}.txt"
         

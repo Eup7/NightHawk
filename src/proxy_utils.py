@@ -11,9 +11,6 @@ class ProxyManager:
         self.latency = None
 
     def set_proxy(self, proxy):
-        """设置代理
-        格式: http://user:pass@host:port 或 http://host:port
-        """
         if proxy:
             self.proxy = {
                 'http': proxy,
@@ -28,13 +25,11 @@ class ProxyManager:
                 return False
 
     def get_headers(self):
-        """获取随机User-Agent的请求头"""
         return {
             'User-Agent': self.user_agent
         }
 
     def test_latency(self):
-        """测试代理延迟"""
         try:
             start_time = time.time()
             response = requests.get(
@@ -44,7 +39,7 @@ class ProxyManager:
                 timeout=10
             )
             if response.status_code == 200:
-                self.latency = (time.time() - start_time) * 1000  # 转换为毫秒
+                self.latency = (time.time() - start_time) * 1000
                 return True
             return False
         except Exception as e:
@@ -52,7 +47,6 @@ class ProxyManager:
             return False
 
     def check_proxy(self):
-        """检查代理是否可用并获取IP信息"""
         try:
             print("\033[33m[*] 正在获取代理IP信息...\033[0m")
             response = requests.get(
@@ -71,7 +65,6 @@ class ProxyManager:
             return False
 
     def print_ip_info(self):
-        """打印IP信息"""
         if not self.ip_info:
             print("\033[31m[-] 无法获取IP信息\033[0m")
             return
