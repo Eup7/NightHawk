@@ -46,9 +46,13 @@ python3 main.py -u https://example.com
 
 # 目录扫描模式
 python3 main.py -u https://example.com -m dir   # 常规目录扫描
+
 python3 main.py -u https://example.com -m dir --type admin  # 扫描管理后台
+
 python3 main.py -u https://example.com -m dir --type api    # 扫描API接口
+
 python3 main.py -u https://example.com -m dir --type backup # 扫描备份文件
+
 python3 main.py -u https://example.com -m dir --type sensitive # 扫描敏感目录
 
 # 子域名扫描
@@ -65,9 +69,13 @@ python3 main.py -u https://example.com -t 20
 
 参数说明
 -u, --url      目标网站URL（必需）
+
 -m, --mode     扫描模式（dir/sub/port/all）
+
 -t, --threads  线程数（默认：10）
+
 -p, --proxy    代理服务器
+
 --type         目录扫描类型（可选：admin/api/backup/sensitive/cms/framework等）
 
 目录扫描类型
